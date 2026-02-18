@@ -5,6 +5,7 @@
     "type": "module",
     "main": "master.mjs",
     "scripts": {
+        "grab": "node grab.mjs",
         "master": "node master.mjs",
         "setup": "npx playwright install chromium",
         "clean": "node -e \"const fs=require('fs');['browser_data'].forEach(d=>{if(fs.existsSync(d)){fs.rmSync(d,{recursive:true});console.log('Cleaned:',d)}})\""

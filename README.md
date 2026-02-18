@@ -9,12 +9,19 @@
 ╚══════════════════════════════════════════════╝
 ```
 
-Feed it a folder of tracks, walk away, come back to a folder of mastered WAV files. That's it.
+Grab songs from Smol mixtapes. Master them on Mixea. Upload to DistroKid. All automated.
 
 ## What It Does
 
-DK MasterBlaster automates the [DistroKid Mixea](https://distrokid.com/mixea/) mastering process using Playwright browser automation:
+### 🎯 Grab (`grab.mjs`)
+Download all songs from a [Smol](https://app.smol.xyz) mixtape or artist page:
+- Fetches track metadata and audio via the Smol API
+- Downloads MP3s with proper naming (`01 - Track Name.mp3`)
+- Optionally downloads cover art for each track
+- Generates a `tracklist.txt`
 
+### 🎚️ Master (`master.mjs`)
+Batch auto-master tracks on [DistroKid Mixea](https://distrokid.com/mixea/) using Playwright:
 1. **Uploads** each track to Mixea
 2. **Sets intensity** (Low → High, 5-point slider)
 3. **Preserves EQ** (or lets you change it)
@@ -22,12 +29,13 @@ DK MasterBlaster automates the [DistroKid Mixea](https://distrokid.com/mixea/) m
 5. **Skips** tracks already mastered with matching settings
 6. **Recovers** from errors and continues the batch
 
-### The DK MasterBlaster Toolkit
+### The DK MasterBlaster Pipeline
 
-| Part | What | Status |
-|------|-------|--------|
-| **Part 1** | Auto-Mastering (Mixea) | ✅ Ready |
-| **Part 2** | Album Upload Automation | 🔜 Coming Soon |
+| Step | Script | What | Status |
+|------|--------|-------|--------|
+| **Grab** | `grab.mjs` | Download songs from Smol | ✅ Ready |
+| **Master** | `master.mjs` | Auto-master on Mixea | ✅ Ready |
+| **Upload** | `upload.mjs` | Upload album to DistroKid | 🔜 Coming Soon |
 
 ## Quick Start
 
@@ -40,7 +48,19 @@ npm install
 npm run setup    # installs Chromium for Playwright
 ```
 
-### 2. Configure
+### 2a. Grab Songs
+
+```bash
+# Download all songs from a Smol mixtape
+npm run grab -- <mixtape-url-or-id> --artist "1OF1" --album "Solstice" --numbered --covers
+
+# Example with full URL
+npm run grab -- https://app.smol.xyz/mixtapes/abc123 --artist "1OF1" --album "Solstice" --numbered
+```
+
+This creates a folder on your Desktop: `1OF1 - Solstice/` with all the MP3s.
+
+### 2b. Configure Mastering
 
 ```bash
 cp config.example.json config.json
