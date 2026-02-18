@@ -1,0 +1,9 @@
+node_modules/
+browser_data/
+debug_*.png
+error_*.png
+run_log*.txt
+*.log
+.DS_Store
+Thumbs.db
+config.json

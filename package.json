@@ -1,0 +1,26 @@
+{
+    "name": "dk-masterblaster",
+    "version": "1.0.0",
+    "description": "🔫 DK MasterBlaster — Batch auto-master your tracks on DistroKid Mixea. Part 1 of the DK automation toolkit.",
+    "type": "module",
+    "main": "master.mjs",
+    "scripts": {
+        "master": "node master.mjs",
+        "setup": "npx playwright install chromium",
+        "clean": "node -e \"const fs=require('fs');['browser_data'].forEach(d=>{if(fs.existsSync(d)){fs.rmSync(d,{recursive:true});console.log('Cleaned:',d)}})\""
+    },
+    "keywords": [
+        "distrokid",
+        "mixea",
+        "mastering",
+        "automation",
+        "music",
+        "playwright",
+        "batch"
+    ],
+    "author": "1OF1",
+    "license": "MIT",
+    "dependencies": {
+        "playwright": "^1.50.0"
+    }
+}

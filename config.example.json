@@ -1,0 +1,12 @@
+{
+    "source": "C:\\Users\\YourName\\Desktop\\Artist - Album Title",
+    "output": "Mastered",
+    "intensity": "high",
+    "eq": "preserve",
+    "format": "ultra-hd",
+    "tracks": [
+        "01 - Track Name.mp3",
+        "02 - Another Track.mp3",
+        "03 - Final Track.mp3"
+    ]
+}
